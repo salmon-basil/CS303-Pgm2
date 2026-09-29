@@ -1,10 +1,10 @@
 
-import java.util.Scanner;
 import java.util.*;
 import java.io.*;
 
 public class Functions {
 
+    //
     public static void loadData(Map<Integer, ArrayList<String>> TVList){
         String fileName = "tv.csv";
         
@@ -15,8 +15,18 @@ public class Functions {
             while (inFile.hasNext()){
                 String inputRecord = inFile.nextLine();
                 try{
-                //set up data 
+                //set up data
+                
+                String input[] = inputRecord.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");// written by Claude 
 
+                Integer movieDuration = Integer.parseInt(input[0]);
+                String movieName = input[1].replace("\"", "");
+
+                if(!TVList.containsKey(movieDuration)){
+                    TVList.put(movieDuration,new ArrayList<String>());
+                }
+                
+                TVList.get(movieDuration).add(movieName);
 
                 //add to map
                 }
@@ -54,3 +64,19 @@ public class Functions {
     }
 
 }
+
+/*
+ * Sources / Citations:
+ * - Claude (Anthropic, Claude Sonnet 5.5), used as an AI assistant for explanations.
+ *   The following ideas were explained by Claude and used as a reference for this file:
+ *     - split(",") and Integer.parseInt()
+ *     - An idea for not splitting on the commas inside a show name
+ *       (names wrapped in quotes, e.g. "Murder, She Wrote")
+ *     - The change in loadData was written by Claude: split(",") was replaced with a
+ *       regular expression that only splits on commas outside of quotes, and the
+ *       quotation marks are then removed from the show name with replace("\"", "").
+ */
+
+
+
+
