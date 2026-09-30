@@ -1,0 +1,24 @@
+This is my Program 2.
+
+I'll run the testing script.
+ An invalid menu choice gives an error and asks again. 
+ P prints the map to the report file. 
+ For A, I enter abc first, so it asks again, then 63 and Tomorrow.
+Deleting ABC gives an error, and deleting Dateline works. 
+K prints the keys, and P shows the updated map with Tomorrow and Yesterday added.. 
+S with 24 prints the shows with 24 seasons. Dateline is no longer in the list because I deleted it.
+Q ends the program.
+
+Each action is its own function in Functions.java, with PRE and POST
+conditions. The tricky part was the CSV file: some show names contain
+commas inside quotes, so I used a regular expression that splits only
+on commas outside quotes. I got help from Claude for this.
+
+And I asked Claude for missing tests. The conversation is in
+conversationLLM.txt. One missing test is entering abc for S, because
+the script only tests abc for A. My program does not check the number
+in S, so it stops with an error, and the report file stays empty.
+Other cases I would not handle well are a negative duration, an empty
+show name, and deleting with a different upper or lower case. 
+
+Thank you for listning.
