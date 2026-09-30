@@ -25,6 +25,21 @@ public class Main {
 
             while (!menuItem.equals("Q")){
                 //test for valid menu options & call appropriate functions
+                if (menuItem.equals("A")) {
+                    Functions.addShow(sortedTVList, input, out);
+                }
+                else if (menuItem.equals("D")) {
+                    Functions.deleteShow(sortedTVList, input, out);
+                }
+                else if (menuItem.equals("K")) {
+                    Functions.printKeys(sortedTVList, out);
+                }
+                else if (menuItem.equals("P")) {
+                    Functions.printMap(sortedTVList, out);
+                }
+                else if (menuItem.equals("S")) {
+                    Functions.printKeyShows(sortedTVList, input, out);
+                }
 
                 menuItem = Functions.getMenuItem(input);
             }
